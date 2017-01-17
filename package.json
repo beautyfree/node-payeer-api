@@ -1,0 +1,42 @@
+{
+  "name": "payeer-api",
+  "version": "0.0.1",
+  "description": "Node.js wrapper for the Payeer.com",
+  "main": "lib/index.js",
+  "scripts": {
+    "eslint": "eslint ./src/*.js",
+    "build": "babel src --out-dir lib",
+    "clean": "rimraf lib",
+    "prepublish": "npm run clean && npm run test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beautyfree/node-payeer-api.git"
+  },
+  "keywords": [
+    "payeer",
+    "billing",
+    "pay",
+    "api"
+  ],
+  "author": "Alexey Elizarov <felex-ae@ya.ru> (http://github.com/beautyfree)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beautyfree/node-payeer-api/issues"
+  },
+  "homepage": "https://github.com/beautyfree/node-payeer-api#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-1": "^6.13.0",
+    "babel-register": "^6.14.0",
+    "eslint": "^3.4.0",
+    "rimraf": "^2.4.3"
+  },
+  "dependencies": {
+    "debug": "^2.6.0",
+    "lodash": "^4.14.2"
+  }
+}
