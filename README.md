@@ -13,14 +13,14 @@ Installation
 ------------
 
 ```bash
-$ npm install payeer
+$ npm install payeer-api
 ```
 
 Usage
 -----
 
 ```js
-var Payeer    = require('payeer');
+var Payeer    = require('payeer-api');
 
 var accountId = 'P123456',
     apiId     = '111222333',
