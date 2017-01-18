@@ -3,7 +3,7 @@ import debug  from 'debug';
 import util   from 'util';
 import https  from 'https';
 
-const logger = debug('payeer');
+const logger = debug('payeer-api');
 
 export default class Payeer {
 
@@ -114,24 +114,22 @@ export default class Payeer {
   }
 
   initOutput(arr, callback) {
-    const payeer  = this;
     const arrPost = _.clone(arr);
 
     arrPost.action = 'initOutput';
 
     this.getResponse(arrPost, (error, response) => {
       if (_.isEmpty(response.errors)) {
-        payeer._output = arr;
+        this._output = arr;
         callback(error, true);
       } else {
-        payeer.errors = response.errors;
+        this.errors = response.errors;
         callback(error, false);
       }
     });
   }
 
   output(callback) {
-    const payeer  = this;
     const arrPost = this._output;
 
     arrPost.action = 'output';
@@ -140,7 +138,7 @@ export default class Payeer {
       if (_.isEmpty(response.errors)) {
         callback(error, response.historyId);
       } else {
-        payeer.errors = response.errors;
+        this.errors = response.errors;
         callback(error, false);
       }
     });
@@ -165,6 +163,7 @@ export default class Payeer {
 
   transfer(arPost, callback) {
     arPost.action = 'transfer';
+
     this.getResponse(arPost, (error, response) => {
       callback(error, response);
     });
@@ -183,16 +182,13 @@ export default class Payeer {
   }
 
   checkUser(arPost, callback) {
-
-    const payeer = this;
-
     arPost.action = 'checkUser';
 
     this.getResponse(arPost, (error, response) => {
       if (_.isEmpty(response.errors)) {
         callback(error, true);
       } else {
-        payeer.errors = response.errors;
+        this.errors = response.errors;
         callback(error, false);
       }
     });
